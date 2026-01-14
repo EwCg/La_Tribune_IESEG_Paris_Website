@@ -4,7 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Tribune IESEG Paris</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>La Tribune IÉSEG Paris | Art Oratoire & Éloquence</title>
+    <meta name="title" content="La Tribune IÉSEG Paris | Art Oratoire & Éloquence">
+    <meta name="description" content="Association d'art oratoire de l'IÉSEG School of Management. Retrouvez nos débats parlementaires, plaidoiries et articles de fond.">
+    
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://votre-username.github.io/votre-repo/">
+    <meta property="og:title" content="La Tribune IÉSEG Paris | L'excellence de l'art oratoire">
+    <meta property="og:description" content="Découvrez l'association championne de France de débat 2021. Trouvez votre voix avec nous.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/EwCg/La_Tribune_Resources/main/milky-way.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="La Tribune IÉSEG Paris">
+    <meta property="twitter:description" content="Association d'art oratoire et d'éloquence de l'IÉSEG.">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
@@ -13,11 +30,18 @@
             --gold: #FECB01;
             --off-white: #F8F9FA;
         }
+        
+        * {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Lato', sans-serif;
             background-color: var(--off-white);
             color: var(--navy);
+            overflow-x: hidden;
         }
+
         h1, h2, h3, h4, .serif {
             font-family: 'Merriweather', serif;
         }
@@ -33,13 +57,11 @@
             animation-play-state: paused;
         }
 
-        /* Masquage discret du branding Elfsight si possible par sélecteur CSS */
-        a[href*="elfsight.com"], 
-        [class*="elfsight-app"] > a {
+        /* Masquage discret du branding Elfsight */
+        .elfsight-app-f74a0c0e-f46a-4dea-acc8-aeb8b742d84e a[href*="elfsight.com"] {
             display: none !important;
             opacity: 0 !important;
-            height: 0 !important;
-            pointer-events: none !important;
+            visibility: hidden !important;
         }
 
         /* Custom scrollbar */
@@ -56,6 +78,15 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #000d1f;
         }
+
+        /* Fade-in animation class */
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
     <script>
         tailwind.config = {
@@ -65,25 +96,27 @@
                         navy: '#011734',
                         gold: '#FECB01',
                         'off-white': '#F8F9FA',
+                    },
+                    maxWidth: {
+                        '7-xl': '80rem',
                     }
                 }
             }
         }
     </script>
-    <!-- External Widgets Scripts -->
     <script src="https://elfsightcdn.com/platform.js" async></script>
     <script type="text/javascript" src="https://platform.linkedin.com/in.js" async></script>
-<script type="importmap">
-{
-  "imports": {
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3"
-  }
-}
-</script>
+    <script type="importmap">
+    {
+      "imports": {
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0",
+        "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "react": "https://esm.sh/react@^19.2.3"
+      }
+    }
+    </script>
 </head>
 <body>
     <div id="root"></div>
