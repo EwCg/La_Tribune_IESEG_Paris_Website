@@ -78,17 +78,6 @@ const Events: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* CTA Join */}
-      <section className="py-24 text-center">
-        <h2 className="serif text-3xl font-bold mb-8">Envie de prendre le micro ?</h2>
-        <a 
-          href="https://forms.gle/your-form-id" 
-          className="bg-gold text-navy px-12 py-5 rounded-full font-bold text-xl hover:bg-navy hover:text-white transition-all transform hover:scale-110 inline-block shadow-2xl"
-        >
-          S'inscrire à la prochaine session
-        </a>
-      </section>
     </main>
   );
 };

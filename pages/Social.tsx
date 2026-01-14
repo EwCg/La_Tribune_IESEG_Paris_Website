@@ -59,12 +59,12 @@ const Social: React.FC = () => {
               </div>
             </div>
             
-            <a href="#" className="mt-8 block text-center py-4 rounded-xl border-2 border-[#0077b5] text-[#0077b5] font-bold hover:bg-[#0077b5] hover:text-white transition-all">
+            <a href="https://www.linkedin.com/company/la-tribune-ieseg/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="mt-8 block text-center py-4 rounded-xl border-2 border-[#0077b5] text-[#0077b5] font-bold hover:bg-[#0077b5] hover:text-white transition-all">
               Voir tout le flux LinkedIn
             </a>
           </section>
 
-          {/* Instagram & Other Section */}
+          {/* Instagram Section */}
           <section>
             <div className="flex items-center gap-4 mb-8">
               <div className="bg-gradient-to-tr from-[#f09433] via-[#e6683c] to-[#bc1888] p-3 rounded-xl">
@@ -84,15 +84,15 @@ const Social: React.FC = () => {
               ))}
             </div>
 
-            <div className="bg-navy rounded-3xl p-10 text-white shadow-2xl overflow-hidden relative">
-              <div className="relative z-10">
-                <h3 className="serif text-2xl font-bold mb-4">Canal WhatsApp</h3>
-                <p className="text-gray-300 mb-6">Recevez les motions de débat en avant-première directement sur votre téléphone.</p>
-                <button className="bg-gold text-navy px-8 py-3 rounded-full font-bold hover:bg-white transition-colors flex items-center gap-2">
-                  <MessageCircle size={20} /> Rejoindre le canal
-                </button>
-              </div>
-              <MessageCircle size={150} className="absolute -bottom-10 -right-10 text-white/5" />
+            <div className="text-center mt-8">
+              <a 
+                href="https://www.instagram.com/latribune_iesegparis/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-[#f09433] to-[#bc1888] text-white font-bold hover:shadow-lg transition-all"
+              >
+                Nous rejoindre sur Instagram
+              </a>
             </div>
           </section>
         </div>

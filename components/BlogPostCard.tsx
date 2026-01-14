@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Article } from '../types';
 import { User, Calendar, ArrowRight } from 'lucide-react';
 
@@ -35,9 +36,12 @@ const BlogPostCard: React.FC<Props> = ({ article, isPreview = false }) => {
           {article.excerpt || 'L\'extrait de votre article apparaîtra ici. Donnez envie aux lecteurs de cliquer en résumant votre pensée.'}
         </p>
         {!isPreview && (
-          <button className="flex items-center gap-2 text-navy font-bold text-sm hover:text-gold transition-colors group">
+          <Link 
+            to={`/articles/${article.slug}`}
+            className="flex items-center gap-2 text-navy font-bold text-sm hover:text-gold transition-colors group"
+          >
             Lire la suite <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-          </button>
+          </Link>
         )}
       </div>
     </div>

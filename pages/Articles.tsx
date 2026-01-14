@@ -1,140 +1,107 @@
 
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import BlogPostCard from '../components/BlogPostCard';
-import { Article } from '../types';
-import { Send, UploadCloud, Info } from 'lucide-react';
+import { MOCK_ARTICLES } from '../constants';
+import { Search, Filter, BookOpen } from 'lucide-react';
 
 const Articles: React.FC = () => {
-  const [formData, setFormData] = useState<Partial<Article>>({
-    title: '',
-    author: '',
-    excerpt: '',
-    content: '',
-    coverImage: '',
-    date: new Date().toLocaleDateString('fr-FR')
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert("Merci ! Votre article a été envoyé pour relecture par le bureau.");
-  };
+  const featuredArticle = MOCK_ARTICLES[0];
+  const otherArticles = MOCK_ARTICLES.slice(1);
 
   return (
-    <main className="py-20 animate-in fade-in duration-700">
-      <div className="max-w-7-xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h1 className="serif text-5xl font-bold mb-6 text-navy">Le Portail de <span className="text-gold">Contribution</span></h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            La Tribune est ouverte à toutes les plumes. Partagez vos réflexions, vos analyses ou vos coups de gueule. 
-            Votre article sera relu et potentiellement publié sur nos réseaux.
-          </p>
+    <main className="animate-in fade-in duration-700">
+      {/* Header Section */}
+      <section className="bg-navy py-20 text-white">
+        <div className="max-w-7-xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <h1 className="serif text-5xl font-bold mb-6">
+              Nos <span className="text-gold">Analyses</span> & Articles
+            </h1>
+            <p className="text-xl text-gray-400 font-light leading-relaxed">
+              Décryptage de l'actualité, techniques de rhétorique et retours d'expérience. 
+              La plume au service de l'éloquence.
+            </p>
+          </div>
         </div>
+      </section>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Form Side */}
-          <div className="bg-white p-8 md:p-12 rounded-3xl shadow-2xl border border-gray-100">
-            <h2 className="serif text-2xl font-bold mb-8 flex items-center gap-2">
-              <Send className="text-gold" /> Rédiger mon article
+      {/* Featured Article Section */}
+      <section className="max-w-7-xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12 mb-20">
+        <div className="bg-white rounded-[2rem] shadow-2xl overflow-hidden border border-gray-100 flex flex-col lg:flex-row">
+          <div className="lg:w-1/2 h-64 lg:h-auto overflow-hidden">
+            <img 
+              src={featuredArticle.coverImage} 
+              alt={featuredArticle.title}
+              className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+            />
+          </div>
+          <div className="lg:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+            <div className="flex items-center gap-2 text-gold font-bold text-xs uppercase tracking-widest mb-4">
+              <BookOpen size={14} /> À la une
+            </div>
+            <h2 className="serif text-3xl md:text-4xl font-bold text-navy mb-6 leading-tight">
+              {featuredArticle.title}
             </h2>
-            
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label className="block text-sm font-bold text-navy mb-2 uppercase tracking-wide">Titre de l'article</label>
-                <input 
-                  type="text" 
-                  name="title"
-                  value={formData.title}
-                  onChange={handleChange}
-                  placeholder="L'éloquence au service du climat..." 
-                  className="w-full bg-off-white border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-gold transition-colors"
-                  required
-                />
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-bold text-navy mb-2 uppercase tracking-wide">Auteur</label>
-                  <input 
-                    type="text" 
-                    name="author"
-                    value={formData.author}
-                    onChange={handleChange}
-                    placeholder="Jean Dupont" 
-                    className="w-full bg-off-white border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-gold transition-colors"
-                    required
-                  />
+            <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+              {featuredArticle.excerpt}
+            </p>
+            <div className="flex items-center justify-between mt-auto">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-navy/10 flex items-center justify-center text-navy font-bold">
+                  {featuredArticle.author.charAt(0)}
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-navy mb-2 uppercase tracking-wide">URL Image Couverture</label>
-                  <input 
-                    type="text" 
-                    name="coverImage"
-                    value={formData.coverImage}
-                    onChange={handleChange}
-                    placeholder="https://images..." 
-                    className="w-full bg-off-white border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-gold transition-colors"
-                  />
+                  <div className="text-sm font-bold text-navy">{featuredArticle.author}</div>
+                  <div className="text-xs text-gray-400">{featuredArticle.date}</div>
                 </div>
               </div>
-
-              <div>
-                <label className="block text-sm font-bold text-navy mb-2 uppercase tracking-wide">Extrait (max 150 car.)</label>
-                <textarea 
-                  name="excerpt"
-                  value={formData.excerpt}
-                  onChange={handleChange}
-                  maxLength={150}
-                  rows={2}
-                  placeholder="Une courte phrase pour donner envie de lire..." 
-                  className="w-full bg-off-white border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-gold transition-colors"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-bold text-navy mb-2 uppercase tracking-wide">Contenu de l'article</label>
-                <textarea 
-                  name="content"
-                  value={formData.content}
-                  onChange={handleChange}
-                  rows={8}
-                  placeholder="Écrivez votre texte ici..." 
-                  className="w-full bg-off-white border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-gold transition-colors"
-                  required
-                />
-              </div>
-
-              <button 
-                type="submit" 
-                className="w-full bg-navy text-gold py-4 rounded-xl font-bold text-lg hover:bg-gold hover:text-navy transition-all transform hover:scale-[1.02] shadow-lg flex items-center justify-center gap-2"
+              <Link 
+                to={`/articles/${featuredArticle.slug}`}
+                className="bg-navy text-gold px-6 py-2 rounded-full font-bold text-sm hover:bg-gold hover:text-navy transition-colors"
               >
-                Soumettre pour relecture <Send size={20} />
-              </button>
-            </form>
-          </div>
-
-          {/* Preview Side */}
-          <div className="hidden lg:block sticky top-32 self-start">
-            <div className="flex items-center gap-2 mb-6 text-gray-500 font-bold uppercase tracking-widest text-xs">
-              <Info size={14} className="text-gold" /> Aperçu en direct
-            </div>
-            <div className="w-[400px] mx-auto">
-              <BlogPostCard article={formData} isPreview={true} />
-            </div>
-            <div className="mt-8 bg-gold/10 p-6 rounded-2xl border border-gold/20">
-              <p className="text-sm text-navy/70 leading-relaxed italic">
-                "La parole est une force, l'écrit est un monument. En contribuant à La Tribune, vous participez 
-                à la mémoire intellectuelle de notre école."
-              </p>
+                Lire l'article
+              </Link>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Search & Filters (UI only) */}
+      <section className="max-w-7-xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-gray-200 pb-8">
+          <div className="relative w-full md:w-96">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+            <input 
+              type="text" 
+              placeholder="Rechercher un article..." 
+              className="w-full pl-12 pr-4 py-3 bg-white border border-gray-200 rounded-xl focus:outline-none focus:border-gold transition-colors"
+            />
+          </div>
+          <div className="flex items-center gap-4 w-full md:w-auto overflow-x-auto pb-2 md:pb-0">
+            <button className="bg-gold text-navy px-4 py-2 rounded-lg font-bold text-sm whitespace-nowrap">Tous</button>
+            <button className="bg-white text-gray-500 px-4 py-2 rounded-lg font-bold text-sm border border-gray-200 hover:border-gold hover:text-navy transition-all whitespace-nowrap">Débat</button>
+            <button className="bg-white text-gray-500 px-4 py-2 rounded-lg font-bold text-sm border border-gray-200 hover:border-gold hover:text-navy transition-all whitespace-nowrap">Rhétorique</button>
+            <button className="bg-white text-gray-500 px-4 py-2 rounded-lg font-bold text-sm border border-gray-200 hover:border-gold hover:text-navy transition-all whitespace-nowrap">Société</button>
+          </div>
+        </div>
+      </section>
+
+      {/* Grid of Articles */}
+      <section className="max-w-7-xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {otherArticles.map((article, index) => (
+            <BlogPostCard key={index} article={article} />
+          ))}
+        </div>
+        
+        {/* Pagination placeholder */}
+        <div className="mt-16 flex justify-center gap-2">
+          <button className="w-10 h-10 rounded-lg bg-navy text-gold font-bold">1</button>
+          <button className="w-10 h-10 rounded-lg bg-white border border-gray-200 text-gray-400 hover:border-gold hover:text-navy transition-colors">2</button>
+          <button className="w-10 h-10 rounded-lg bg-white border border-gray-200 text-gray-400 hover:border-gold hover:text-navy transition-colors">3</button>
+        </div>
+      </section>
     </main>
   );
 };

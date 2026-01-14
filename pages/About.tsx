@@ -28,7 +28,7 @@ const About: React.FC = () => {
                 <div className="text-gray-500 text-sm uppercase font-bold mt-1">Fondation</div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-navy">50+</div>
+                <div className="text-4xl font-bold text-navy">30+</div>
                 <div className="text-gray-500 text-sm uppercase font-bold mt-1">Membres Actifs</div>
               </div>
               <div>
@@ -97,13 +97,22 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* Partners */}
-      <section className="bg-off-white py-16">
+      {/* Partners - Modernized and Enlarged */}
+      <section className="bg-off-white py-24">
         <div className="max-w-7-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h4 className="text-gray-400 font-bold uppercase tracking-widest text-sm mb-12">Nos Partenaires & Fédérations</h4>
-          <div className="flex flex-wrap justify-center items-center gap-16 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+          <h4 className="text-navy font-bold uppercase tracking-widest text-sm mb-16">Nos Partenaires & Fédérations</h4>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
             {PARTNERS.map((p) => (
-              <img key={p.name} src={p.logo} alt={p.name} className="h-16 object-contain" />
+              <div 
+                key={p.name} 
+                className="bg-white p-12 rounded-3xl shadow-lg border border-gray-100 flex items-center justify-center group hover:shadow-2xl hover:border-gold transition-all duration-500"
+              >
+                <img 
+                  src={p.logo} 
+                  alt={p.name} 
+                  className="h-40 md:h-56 w-auto object-contain transition-transform duration-500 group-hover:scale-110" 
+                />
+              </div>
             ))}
           </div>
         </div>

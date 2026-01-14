@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --navy: #0A2342;
+            --navy: #011734;
             --gold: #FECB01;
             --off-white: #F8F9FA;
         }
@@ -33,6 +33,15 @@
             animation-play-state: paused;
         }
 
+        /* Masquage discret du branding Elfsight si possible par sélecteur CSS */
+        a[href*="elfsight.com"], 
+        [class*="elfsight-app"] > a {
+            display: none !important;
+            opacity: 0 !important;
+            height: 0 !important;
+            pointer-events: none !important;
+        }
+
         /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -41,11 +50,11 @@
             background: #f1f1f1;
         }
         ::-webkit-scrollbar-thumb {
-            background: #0A2342;
+            background: #011734;
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #081b33;
+            background: #000d1f;
         }
     </style>
     <script>
@@ -53,7 +62,7 @@
             theme: {
                 extend: {
                     colors: {
-                        navy: '#0A2342',
+                        navy: '#011734',
                         gold: '#FECB01',
                         'off-white': '#F8F9FA',
                     }

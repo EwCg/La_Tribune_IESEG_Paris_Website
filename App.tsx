@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Events from './pages/Events';
 import Articles from './pages/Articles';
+import ArticleDetail from './pages/ArticleDetail';
 import Social from './pages/Social';
 
 const ScrollToTop = () => {
@@ -29,6 +30,7 @@ const App: React.FC = () => {
             <Route path="/about" element={<About />} />
             <Route path="/events" element={<Events />} />
             <Route path="/articles" element={<Articles />} />
+            <Route path="/articles/:slug" element={<ArticleDetail />} />
             <Route path="/social" element={<Social />} />
           </Routes>
         </div>

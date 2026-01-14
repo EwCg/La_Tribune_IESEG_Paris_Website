@@ -10,7 +10,7 @@ const Home: React.FC = () => {
       <section className="relative h-[85vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1475721027785-f74dea327912?auto=format&fit=crop&q=80&w=2000" 
+            src="https://raw.githubusercontent.com/EwCg/La_Tribune_Resources/main/milky-way.jpg" 
             className="w-full h-full object-cover"
             alt="Hero Background"
           />
@@ -27,14 +27,6 @@ const Home: React.FC = () => {
               La Tribune IÉSEG est l'association de référence pour l'art oratoire, 
               le débat parlementaire et l'éloquence au sein de l'IÉSEG School of Management.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <a href="#/events" className="bg-gold text-navy px-8 py-4 rounded-full font-bold text-lg hover:bg-white transition-all transform hover:scale-105 shadow-xl">
-                Découvrir nos activités
-              </a>
-              <a href="#/about" className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-navy transition-all">
-                Notre Histoire
-              </a>
-            </div>
           </div>
         </div>
       </section>
@@ -69,7 +61,7 @@ const Home: React.FC = () => {
               </div>
               <h3 className="serif text-2xl font-bold mb-4">Transmission</h3>
               <p className="text-gray-600 leading-relaxed">
-                Plus de 500 étudiants formés à la prise de parole en public chaque année via nos ateliers.
+                Formation régulière de nos membres en interne pour assurer une transmission du savoir efficace.
               </p>
             </div>
             <div className="p-8 rounded-2xl hover:bg-off-white transition-colors">
@@ -90,16 +82,16 @@ const Home: React.FC = () => {
         <div className="max-w-7-xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="serif text-4xl font-bold mb-4">Actualités Récentes</h2>
-            <div className="w-24 h-1 bg-gold mx-auto"></div>
+            <div className="w-24 h-1 bg-gold mx-auto mb-6"></div>
+            <p className="text-gray-500 max-w-lg mx-auto italic">Retrouvez nos derniers débats et événements en direct sur LinkedIn.</p>
           </div>
           
-          <div className="bg-white p-4 rounded-3xl shadow-xl overflow-hidden">
-             {/* Replace with actual Elfsight embed code if available, currently using placeholder for design */}
-            <div className="elfsight-app-f74a0c0e-f46a-4dea-acc8-aeb8b742d84e" data-elfsight-app-lazy>
-              <div className="p-20 text-center text-gray-400 border-2 border-dashed border-gray-200 rounded-xl">
-                [ LinkedIn Dynamic Feed Placeholder ]
-              </div>
-            </div>
+          <div className="bg-white rounded-[2rem] shadow-2xl border border-gray-100 overflow-hidden min-h-[500px] relative">
+            {/* Le widget Elfsight s'injecte ici de manière propre */}
+            <div className="elfsight-app-f74a0c0e-f46a-4dea-acc8-aeb8b742d84e" data-elfsight-app-lazy></div>
+            
+            {/* Overlay discret de chargement qui disparaît quand le widget est là */}
+            <div className="absolute inset-0 bg-gray-50/50 pointer-events-none -z-10 animate-pulse"></div>
           </div>
         </div>
       </section>

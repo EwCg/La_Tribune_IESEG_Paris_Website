@@ -8,6 +8,7 @@ export interface TeamMember {
 }
 
 export interface Article {
+  slug: string;
   title: string;
   author: string;
   excerpt: string;
